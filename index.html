@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sen Hangi Arabasın?</title>
+<meta name="description" content="Trafikteki halin değil, insan olarak kimliğin: Doblo mu, Egea mı, Şahin mi? 10 soruluk mizahi kişilik testi.">
+<meta property="og:title" content="Sen Hangi Arabasın?">
+<meta property="og:description" content="Doblo mu, Egea mı, yoksa haber vermeden kaybolan BMW mi? 10 soruda karakterine uyan arabayı bul.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#ffc928">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23ffc928'/%3E%3Cpath d='M8 44V36q1-5 8-6l10-9h18l8 9q6 1 6 7v7Z' fill='%2316171a'/%3E%3Ccircle cx='20' cy='45' r='6' fill='%23fff'/%3E%3Ccircle cx='46' cy='45' r='6' fill='%23fff'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;800&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* VOICE: Türk internetinin araba capsi: şakacı, yüksek sesli, mahalle sohbeti
+   IDEA: yol + plaka; test bir yolculuk, sonuç senin plakan
+   PICTURE: asfalt şeridinde ilerleyen araba (ilerleme), sonuçta büyük plaka + araba silüeti
+   COLOUR and TYPE: yol sarısı zemin, asfalt siyahı, plaka beyazı + TR mavisi; Barlow Condensed + Barlow
+   LAYOUT: tek sütun, telefon önce; başlık, yol, kart */
+:root{color-scheme:light dark;--bg:light-dark(#ffc928,#17181b);--ink:light-dark(#16171a,#f3f1ea);--card:light-dark(#fffdf5,#24262b);--road:#2a2c31;--blue:#0b3f99;--line:light-dark(#16171a22,#ffffff1f);--mute:light-dark(#4a4636,#b5b2a6)}
+:root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Barlow,system-ui,sans-serif;overflow-x:clip;min-height:100vh}
+.wrap{max-width:640px;margin:0 auto;padding:clamp(20px,4vw,48px) 16px 48px}
+h1,h2,.d{font-family:"Barlow Condensed",Impact,sans-serif;font-weight:800;line-height:1.05;text-wrap:balance;margin:0}
+h1{font-size:clamp(40px,10vw,56px)}
+.sub{font-size:17px;margin:10px 0 0;color:var(--mute)}
+.road{position:relative;height:84px;background:var(--road);border-radius:14px;margin:22px 0;overflow:hidden}
+.road::before{content:"";position:absolute;left:0;right:0;top:50%;height:4px;margin-top:-2px;background:repeating-linear-gradient(90deg,#ffc928 0 28px,transparent 28px 52px)}
+.road .car{position:absolute;bottom:6px;left:4px;width:96px;transition:left .6s cubic-bezier(.3,1.4,.5,1)}
+.road .flag{position:absolute;right:10px;top:10px;color:#fff;font:800 14px "Barlow Condensed",sans-serif}
+.card{background:var(--card);border-radius:18px;padding:clamp(18px,4vw,28px);box-shadow:0 2px 0 var(--line),0 14px 34px #0000002a}
+.cnt{font:600 15px Barlow,sans-serif;color:var(--mute)}
+h2{font-size:clamp(28px,7vw,36px);margin:6px 0 18px}
+.opts{display:grid;gap:10px}
+.opt{font:600 17px/1.35 Barlow,sans-serif;text-align:left;color:var(--ink);background:transparent;border:2px solid var(--line);border-radius:12px;padding:14px 16px;min-height:52px;cursor:pointer;display:flex;gap:12px;align-items:center}
+.opt b{flex:none;width:30px;height:30px;border-radius:8px;background:var(--ink);color:var(--card);display:grid;place-items:center;font:800 17px "Barlow Condensed",sans-serif}
+.opt:hover{border-color:var(--ink)}
+.opt:focus-visible,.btn:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+.opt.on{background:var(--ink);color:var(--card)}.opt.on b{background:#ffc928;color:#16171a}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.btn{font:800 19px "Barlow Condensed",sans-serif;border:0;border-radius:12px;padding:12px 22px;min-height:48px;cursor:pointer;background:var(--ink);color:var(--card)}
+.btn.g{background:transparent;color:var(--ink);border:2px solid var(--ink)}
+.btn:disabled{opacity:.35;cursor:default}
+.plate{display:flex;align-items:stretch;background:#fff;color:#111;border:4px solid #111;border-radius:10px;overflow:hidden;width:min(100%,420px);margin:6px auto 4px}
+.plate i{flex:none;width:44px;background:var(--blue);color:#fff;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;font:800 17px/1 "Barlow Condensed",sans-serif;font-style:normal;padding-bottom:8px}
+.plate span{flex:1;text-align:center;font:800 clamp(34px,10vw,54px)/1.2 "Barlow Condensed",sans-serif;letter-spacing:.04em;padding:4px 6px;white-space:nowrap}
+.hero{display:block;width:min(100%,360px);margin:8px auto 0}
+.rname{font-size:clamp(40px,11vw,52px);text-align:center;margin-top:8px}
+.tag{text-align:center;font-weight:600;color:var(--mute);margin:4px 0 14px}
+ul.tr{padding-left:20px;margin:10px 0}ul.tr li{margin:6px 0}
+.bars{margin-top:18px;display:grid;gap:8px}
+.bar{display:grid;grid-template-columns:7.5em minmax(0,1fr) 3em;gap:10px;align-items:center;font-size:15px;font-weight:600}
+.bar div{height:12px;border-radius:6px;background:var(--line);overflow:hidden}
+.bar div s{display:block;height:100%;background:var(--ink);border-radius:6px}
+.bar em{font-style:normal;text-align:right;white-space:nowrap}
+.note{font-size:14px;color:var(--mute);margin-top:12px}
+.hide{display:none}
+@media (prefers-reduced-motion:reduce){.road .car{transition:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Sen hangi arabasın?</h1>
+  <p class="sub">Trafikteki halin değil, insan olarak kimliğin. Arkadaşlığına, alışkanlıklarına ve huyuna göre Türk internetinin araba capslerinde hangisisin?</p>
+
+  <div class="road" aria-hidden="true"><div class="car" id="rc"></div><div class="flag">🏁 SONUÇ</div></div>
+
+  <section class="card" id="start">
+    <h2 style="margin-top:0">Kontağı çevir</h2>
+    <p>Araba kullanmayı unut; bu test senin karakterine bakıyor. Her soruda sana en yakın şıkkı seç. Puanlar gizli, şıkların yeri her seferinde karışıyor.</p>
+    <div class="row"><button class="btn" id="go">Teste başla</button></div>
+  </section>
+
+  <section class="card hide" id="quiz">
+    <div class="cnt" id="cnt"></div>
+    <h2 id="q"></h2>
+    <div class="opts" id="opts"></div>
+    <div class="row">
+      <button class="btn g" id="back">Geri</button>
+      <button class="btn" id="next" disabled>Devam</button>
+    </div>
+  </section>
+
+  <section class="card hide" id="res">
+    <div class="cnt" style="text-align:center">Senin plakan</div>
+    <div class="plate"><i>TR</i><span id="pl"></span></div>
+    <div id="hero"></div>
+    <h2 class="rname" id="rn"></h2>
+    <p class="tag" id="rt"></p>
+    <p id="rd"></p>
+    <ul class="tr" id="rl"></ul>
+    <p id="rf"></p>
+    <h3 class="d" style="font-size:24px;margin-top:20px">Karakterinin diğer arabalarla eşleşmesi</h3>
+    <div class="bars" id="bars"></div>
+    <div class="row">
+      <button class="btn" id="copy">Sonucu kopyala</button>
+      <button class="btn g" id="again">Tekrar çöz</button>
+    </div>
+    <p class="note" id="cmsg">Bu test tamamen mizah amaçlıdır; kimse incinmemiştir (Egea'lar hariç, onlar zaten sollayıp geçti).</p>
+  </section>
+</div>
+
+<script>
+{
+const CARS={
+ doblo:{n:"Fiat Doblo",p:"42 AİLE 07",c:"#c9cdd2",sh:"van",t:"Herkesin yükünü taşıyan, gösterişsiz kahraman",
+  d:"Sen grubun sağlam omzusun. Biri taşınıyorsa, havalimanından alınacaksa, birine yer lazımsa ilk akla gelen sensin. Gösteriş yok, hava yok; ama sen olmadan hiçbir organizasyon yürümez.",
+  l:["Çantanda tırnak makası, ağrı kesici, şarj aleti, hepsi var","Aile grubunun en aktif üyesi sensin","'Ben hallederim' deyip gerçekten hallediyorsun"],f:"Havalı değilsin belki, ama herkesin hayatında bir Doblo'ya ihtiyacı var."},
+ egea:{n:"Fiat Egea",p:"34 SOL 01",c:"#e9ecef",sh:"sedan",t:"Hızlı, iddialı, her yerde",
+  d:"Sabırsızsın ve bunu saklamıyorsun. Kuyrukta beklemek sana işkence, tartışmada son sözü söylemeden bırakmazsın. Her ortamda varsın ve her ortamda sesin duyuluyor.",
+  l:["Mesaja anında dönersin, karşı taraf dönmezse olay çıkar","Ekranın kırık ama 'idare eder' diyorsun","Kendini olduğundan biraz daha güçlü sanıyorsun ve bu seni durdurmuyor"],f:"Biraz yavaşlasan dünya yıkılmaz; ama sen yine de sollarsın."},
+ sahin:{n:"Tofaş Şahin",p:"35 ŞHN 77",c:"#b8322a",sh:"retro",t:"Eski kafa, sağlam yürek",
+  d:"Sen nostaljinin vücut bulmuş halisin. 'Eskiden her şey daha güzeldi' cümlesi senin mottondur. Yeni trendlere burun kıvırırsın ama eski dostlukların, eski şarkıların ve eski mahallen senin için kutsal.",
+  l:["Telefonun yedi yaşında ve hâlâ 'çalışıyor işte' diyorsun","Kasetler, eski fotoğraflar, eski arkadaşlar: hepsini saklarsın","İnatçısın; bir kere karar verdin mi kimse değiştiremez"],f:"Seni hurdaya çıkaramazlar, sen klasik olursun."},
+ passat:{n:"VW Passat",p:"34 TSP 99",c:"#1f2a36",sh:"sedan",t:"Az konuşan, çok sözü dinlenen ağır abi",
+  d:"Konuşmana gerek yok; bir bakışın yetiyor. Arkadaş grubunda kriz çıkınca herkes sana döner. 'Tamam abi' iki kelime ama senden çıkınca anlaşma imzalanmış sayılır.",
+  l:["Hesabı sessizce ödemiş olursun, kimse fark etmeden","Tartışmayı susarak kazanırsın","Herkes sana dert anlatır, sen kimseye anlatmazsın"],f:"Sakin görünürsün, ama sınırını geçen bir daha geçmez."},
+ bmw:{n:"BMW",p:"06 SNY 00",c:"#1f5fbf",sh:"coupe",t:"Havalı, kuralsız, haber vermeden kaybolan",
+  d:"Sinyal vermediğin gibi mesajlara da dönmüyorsun. Planlara son dakika katılır ya da son dakika iptal edersin, ama geldiğinde ortamın yıldızı sensin. Kurallar senin için önerilerden ibaret.",
+  l:["'Görüldü' bırakıp üç gün sonra 'kanka yeni gördüm' yazarsın","Ay sonu makarna yersin ama kıyafetin kusursuz","Partiden kimseye söylemeden çıkarsın"],f:"Herkes seni sever; sadece arada bir haber versen daha çok severler."},
+ togg:{n:"Togg",p:"16 ŞRJ 23",c:"#e2602f",sh:"ev",t:"Trend avcısı, geleceğin insanı",
+  d:"Yeni bir şey çıktıysa ilk deneyen sensin: yeni uygulama, yeni kafe, yeni telefon. Arkadaşlarının teknik destek hattısın. Bazen fazla heyecanlanıp 'ön sipariş' verirsin, sonra beklemeye başlarsın.",
+  l:["Uyku skorunu akıllı saatten kontrol edersin","Yeni açılan her mekânı ilk sen keşfedersin","Arada bir 'güncelleniyorum, bekleyin' moduna girersin"],f:"Geleceği yaşıyorsun; yeter ki şarjın bitmesin."}
+};
+const ORDER=["doblo","egea","sahin","passat","bmw","togg"];
+const Q=[
+ {q:"Arkadaş grubunda senin rolün ne?",o:[
+  ["Herkesi eve bırakan, organizasyonu yapan",{doblo:3}],
+  ["Son anda gelen ama ortamı ateşleyen",{bmw:3,egea:1}],
+  ["Az konuşan ama son sözü söyleyen",{passat:3}],
+  ["Yeni mekânı, yeni uygulamayı ilk bulan",{togg:3}]]},
+ {q:"Mesajlara nasıl cevap verirsin?",o:[
+  ["Görüldü bırakırım, üç gün sonra 'yeni gördüm'",{bmw:3}],
+  ["Anında, hem de art arda beş mesajla",{egea:3}],
+  ["Aile grubuna her sabah günaydın gülü atarım",{doblo:2,sahin:2}],
+  ["Tek cevap: 'Tamam abi'",{passat:3}]]},
+ {q:"İdeal hafta sonun nasıl geçer?",o:[
+  ["Serpme kahvaltı, pazar alışverişi, akraba ziyareti",{doblo:3}],
+  ["Plan yok, kim ararsa oraya",{bmw:2,egea:2}],
+  ["Eski mahallede eski arkadaşlarla",{sahin:3}],
+  ["Yeni açılan konsept kafe ya da bir etkinlik",{togg:3}]]},
+ {q:"Para harcama tarzın?",o:[
+  ["Son kuruş kıyafete, ay sonu makarna",{bmw:3}],
+  ["İndirim takibi, bozuk para kumbarası",{doblo:3,sahin:1}],
+  ["En yeni telefon, on iki taksit",{togg:3,egea:1}],
+  ["'Ben hallederim' der, hesabı sessizce öderim",{passat:3}]]},
+ {q:"Telefonun hakkında ne söyler?",o:[
+  ["Yedi yaşında ama hâlâ çalışıyor",{sahin:3}],
+  ["Her yıl yenisi, mümkünse ön siparişle",{togg:3}],
+  ["Ekran kırık ama idare ediyor",{egea:3}],
+  ["Galeride aile fotoğrafları, içinde kırk grup",{doblo:3}]]},
+ {q:"Bir tartışmada nasıl birisin?",o:[
+  ["Haklı çıkana kadar bırakmam",{egea:3}],
+  ["'Eskiden böyle değildi' diye söze girerim",{sahin:3}],
+  ["Bakarım, susarım, herkes anlar",{passat:3}],
+  ["Konu kızışınca ben çoktan gitmiş olurum",{bmw:3}]]},
+ {q:"Sabahların nasıl başlar?",o:[
+  ["Erken kalkıp herkese kahvaltı hazırlarım",{doblo:3}],
+  ["Beş alarm ertelemesi, son dakika koşturma",{egea:2,bmw:1}],
+  ["Akıllı saatten uyku skoruma bakarım",{togg:3}],
+  ["Demli çay, radyo, sessizlik",{sahin:2,passat:1}]]},
+ {q:"Hayat mottona en yakın olan?",o:[
+  ["Bekleyen derviş değil, sollayan kazanır",{egea:3}],
+  ["Haber vermek zorunda değilim",{bmw:3}],
+  ["Eski tas eski hamam ama sağlam",{sahin:3}],
+  ["Geleceği bekleme, ön sipariş ver",{togg:3}]]},
+ {q:"Arkadaşların seni en çok ne zaman arar?",o:[
+  ["Ev taşırken ya da havalimanı dönüşünde",{doblo:3}],
+  ["Başları sıkışınca: 'Abi bir konuşur musun?'",{passat:3}],
+  ["Eğlence lazım olunca",{egea:2,bmw:2}],
+  ["Bir şey kurulacak ya da bozulduysa",{togg:3}]]},
+ {q:"Seni en iyi anlatan cümle?",o:[
+  ["Hızlı yaşa, sonra düşünürüz",{egea:3}],
+  ["Ben çıktım ama kimseye söylemedim",{bmw:3}],
+  ["Bende yer var, gel",{doblo:3}],
+  ["Az ama öz",{passat:2,sahin:1}]]}
+];
+const MAX={};ORDER.forEach(k=>MAX[k]=Q.reduce((s,x)=>s+Math.max(0,...x.o.map(o=>o[1][k]||0)),0));
+const $=id=>document.getElementById(id);
+function carSVG(c,sh){
+  const bodies={
+   van:"M14 70 L14 34 Q14 22 28 22 L118 22 Q130 22 138 34 L160 52 Q172 54 172 66 L172 70 Z",
+   sedan:"M10 70 L10 56 Q12 48 26 46 L50 30 Q56 26 66 26 L112 26 Q122 26 130 34 L146 46 Q170 48 172 60 L172 70 Z",
+   retro:"M8 70 L8 54 Q10 48 22 46 L48 30 L124 30 L146 46 Q170 48 172 58 L172 70 Z",
+   coupe:"M10 70 L10 58 Q12 50 28 48 L60 30 Q66 27 76 27 L110 27 Q120 28 130 36 L146 48 Q172 50 172 62 L172 70 Z",
+   ev:"M10 70 L10 52 Q12 42 26 40 L54 26 Q60 23 70 23 L118 23 Q128 23 136 32 L152 44 Q172 46 172 60 L172 70 Z"};
+  const win={van:"M30 30 L112 30 Q122 30 128 38 L140 50 L30 50 Z",sedan:"M56 34 L110 34 Q118 34 124 40 L134 47 L44 47 Z",retro:"M52 35 L120 35 L136 47 L40 47 Z",coupe:"M64 34 L108 34 Q116 34 122 40 L132 48 L50 48 Z",ev:"M60 30 L116 30 Q124 30 130 36 L142 45 L42 45 Z"};
+  const w=(x)=>`<circle cx="${x}" cy="70" r="13" fill="#141414"/><circle cx="${x}" cy="70" r="5.5" fill="#9aa0a6"/>`;
+  return `<svg viewBox="0 0 182 86" xmlns="http://www.w3.org/2000/svg"><ellipse cx="91" cy="82" rx="80" ry="4" fill="#00000040"/><path d="${bodies[sh]}" fill="${c}" stroke="#141414" stroke-width="3" stroke-linejoin="round"/><path d="${win[sh]}" fill="#9fd3ff" stroke="#141414" stroke-width="2.5"/><path d="M14 60 L172 60" stroke="#ffffff55" stroke-width="2"/>${w(44)}${w(142)}<rect x="164" y="56" width="8" height="5" rx="2" fill="#ffd34d"/></svg>`;
+}
+let i=0,ans=[],order=[];
+const shuffle=a=>{a=a.slice();for(let j=a.length-1;j>0;j--){const k=Math.floor(Math.random()*(j+1));[a[j],a[k]]=[a[k],a[j]]}return a};
+$("rc").innerHTML=carSVG("#ffc928","sedan");
+function moveCar(f){const r=$("rc").parentElement.clientWidth-170;$("rc").style.left=(4+Math.max(0,r)*f)+"px"}
+function start(){i=0;ans=Array(Q.length).fill(null);order=Q.map(x=>shuffle(x.o.map((_,j)=>j)));$("start").classList.add("hide");$("res").classList.add("hide");$("quiz").classList.remove("hide");$("rc").innerHTML=carSVG("#ffc928","sedan");show()}
+function show(){
+  const x=Q[i];$("cnt").textContent=`Soru ${i+1} / ${Q.length}`;$("q").textContent=x.q;
+  $("opts").innerHTML=order[i].map((j,n)=>`<button class="opt${ans[i]===j?" on":""}" data-j="${j}"><b>${"ABCD"[n]}</b><span>${x.o[j][0]}</span></button>`).join("");
+  $("next").disabled=ans[i]===null;$("next").textContent=i===Q.length-1?"Sonucu gör":"Devam";
+  $("back").style.visibility=i?"visible":"hidden";moveCar(i/Q.length);
+}
+$("opts").addEventListener("click",e=>{const b=e.target.closest(".opt");if(!b)return;ans[i]=+b.dataset.j;show();setTimeout(()=>{if(ans[i]!==null&&i<Q.length-1){i++;show()}},280)});
+$("next").addEventListener("click",()=>{if(ans[i]===null)return;if(i<Q.length-1){i++;show()}else result()});
+$("back").addEventListener("click",()=>{if(i>0){i--;show()}});
+$("go").addEventListener("click",start);$("again").addEventListener("click",start);
+let last="";
+function result(){
+  const s={};ORDER.forEach(k=>s[k]=0);
+  ans.forEach((j,n)=>{const p=Q[n].o[j][1];for(const k in p)s[k]+=p[k]});
+  const pct={};ORDER.forEach(k=>pct[k]=Math.round(100*s[k]/MAX[k]));
+  const win=ORDER.slice().sort((a,b)=>pct[b]-pct[a]||s[b]-s[a])[0],C=CARS[win];
+  moveCar(1);$("rc").innerHTML=carSVG(C.c,C.sh);
+  $("quiz").classList.add("hide");$("res").classList.remove("hide");
+  $("pl").textContent=C.p;$("hero").innerHTML=`<div class="hero">${carSVG(C.c,C.sh)}</div>`;
+  $("rn").textContent=C.n;$("rt").textContent=C.t;$("rd").textContent=C.d;$("rf").textContent=C.f;
+  $("rl").innerHTML=C.l.map(t=>`<li>${t}</li>`).join("");
+  $("bars").innerHTML=ORDER.slice().sort((a,b)=>pct[b]-pct[a]).map(k=>`<div class="bar"><span>${CARS[k].n}</span><div><s style="width:${pct[k]}%"></s></div><em>%${pct[k]}</em></div>`).join("");
+  last=`"Sen hangi arabasın?" testinde ben ${C.n} çıktım (%${pct[win]} eşleşme): ${C.t}. Sen ne çıkacaksın?`;
+  $("cmsg").textContent="Bu test tamamen mizah amaçlıdır; kimse incinmemiştir (Egea'lar hariç, onlar zaten sollayıp geçti).";
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+$("copy").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(last);$("copy").textContent="Kopyalandı"}catch(e){$("cmsg").textContent=last}setTimeout(()=>$("copy").textContent="Sonucu kopyala",1800)});
+addEventListener("resize",()=>{if(!$("quiz").classList.contains("hide"))moveCar(i/Q.length)});
+}
+</script>
+</body>
+</html>
